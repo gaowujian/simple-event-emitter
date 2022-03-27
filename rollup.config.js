@@ -5,16 +5,17 @@ export default {
   output: [
     {
       format: "umd",
-      file: "lib/bundle.umd.js",
+      file: `dist/bundle.js`,
+      name: "simpleEmitter",
     },
     {
       format: "cjs",
-      file: "lib/bundle.cjs.js",
+      file: `lib/bundle.js`,
     },
     {
       format: "es",
-      file: "es/bundle.es.js",
+      file: `es/bundle.js`,
     },
   ],
-  plugins: [typescript()],
+  plugins: [typescript({ lib: ["es5", "es6", "dom"], target: "es5" })],
 };
