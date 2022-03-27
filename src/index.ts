@@ -7,10 +7,17 @@ const fn = () => {
   console.log("我应该要吃早饭了");
 };
 event.addEventListener("breakfast", fn);
-event.addEventListener("breakfast", fn);
+event.print();
+// event.removeEventListener("breakfast", fn);
+event.emit("breakfast");
 
-event.addEventListener("breakfast", fn);
 event.print();
 
-event.removeAllEventListeners("breakfast");
+console.log("==============");
+
+event.once("breakfast", fn);
+event.print();
+event.removeEventListener("breakfast", fn);
+// event.emit("breakfast");
+
 event.print();
