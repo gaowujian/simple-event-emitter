@@ -8,17 +8,11 @@ class EventEmitter {
       >
     | undefined
   > = {};
-  constructor() {
-    // 注册一个新listener，在有新的事件注册的时候，会触发这个listener
-    this.addEventListener("_newListener", (...args: any[]) => {
-      args.forEach((item) => {
-        // console.log("item:", item);
-      });
-    });
-  }
+
   on(eventName: string, listener: Function) {
-    if (eventName !== "_newListener") {
-      this.emit("_newListener", eventName, listener);
+    if (eventName !== "newListener") {
+      // * 重要的副作用: 如果注册了一个newListener的监听器, 可以在该监听器中获取到任何新来的事件和监听器，并添加一些逻辑处理
+      this.emit("newListener", eventName, listener);
     }
     const existed = this.events[eventName];
     if (!existed) {
