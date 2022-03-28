@@ -1,5 +1,5 @@
 {
-  "name": "simple-event-emitter",
+  "name": "@gwjlshebei/simple-event-emitter",
   "version": "1.0.0",
   "main": "lib/bundle.js",
   "scripts": {
