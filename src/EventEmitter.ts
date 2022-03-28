@@ -12,7 +12,7 @@ class EventEmitter {
     // 注册一个新listener，在有新的事件注册的时候，会触发这个listener
     this.addEventListener("_newListener", (...args: any[]) => {
       args.forEach((item) => {
-        console.log("item:", item);
+        // console.log("item:", item);
       });
     });
   }
@@ -67,7 +67,7 @@ class EventEmitter {
   emit(eventName: string, ...args: any) {
     const listeners = this.events[eventName];
     if (listeners) {
-      listeners.forEach((fn) => fn(...args));
+      listeners.forEach((fn) => fn.call(this, ...args));
     }
   }
 

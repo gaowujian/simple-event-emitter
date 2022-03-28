@@ -17,5 +17,5 @@ export default {
       file: `es/bundle.js`,
     },
   ],
-  plugins: [typescript({ lib: ["es5", "es6", "dom"], target: "es5" })],
+  plugins: [typescript()],
 };
