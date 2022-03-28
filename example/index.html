@@ -9,7 +9,23 @@
   <body>
     <!-- 用于测试umd导出 -->
     <script src="../dist/bundle.js"></script>
+    <!-- <script>
+      const event = new window.simpleEmitter();
+      event.addEventListener("test", (args) => {
+        console.log("chile", ...args);
+      });
+
+      event.emit("test", "aa", "bb");
+    </script> -->
     <!-- 用于测试es导出 -->
-    <!-- <script src="../es/bundle.js" type="module"></script> -->
+    <script type="module">
+      import EventEmitter from "../es/bundle.js";
+      const event = new EventEmitter();
+      event.addEventListener("test", (args) => {
+        console.log("chile", ...args);
+      });
+
+      event.emit("test", "aa", "bb");
+    </script>
   </body>
 </html>
