@@ -57,7 +57,7 @@ class EventEmitter {
     const enhanced = () => {
       listener();
       // 正常的监听函数触发，并移除
-      this.removeEventListener(eventName, listener);
+      this.removeEventListener(eventName, enhanced);
     };
     enhanced.l = listener;
 
