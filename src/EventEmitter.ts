@@ -8,7 +8,18 @@ class EventEmitter {
       >
     | undefined
   > = {};
+  constructor() {
+    // 注册一个新listener，在有新的事件注册的时候，会触发这个listener
+    this.addEventListener("_newListener", (...args: any[]) => {
+      args.forEach((item) => {
+        console.log("item:", item);
+      });
+    });
+  }
   on(eventName: string, listener: Function) {
+    if (eventName !== "_newListener") {
+      this.emit("_newListener", eventName, listener);
+    }
     const existed = this.events[eventName];
     if (!existed) {
       this.events[eventName] = [listener];
@@ -53,10 +64,10 @@ class EventEmitter {
     this.on(eventName, enhanced);
   }
 
-  emit(eventName: string) {
+  emit(eventName: string, ...args: any) {
     const listeners = this.events[eventName];
     if (listeners) {
-      listeners.forEach((fn) => fn());
+      listeners.forEach((fn) => fn(...args));
     }
   }
 
