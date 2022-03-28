@@ -61,7 +61,7 @@ class EventEmitter {
   emit(eventName: string, ...args: any) {
     const listeners = this.events[eventName];
     if (listeners) {
-      listeners.forEach((fn) => fn.call(this, args));
+      listeners.forEach((fn) => fn.call(this, ...args));
     }
   }
 
